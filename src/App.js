@@ -65,7 +65,7 @@ function App() {
             <select
               value={selectedRegion}
               onChange={(e) => setSelectedRegion(e.target.value)}
-              className="p-2 border rounded"
+              className="p-2 border rounded text-black"
             >
               <option value="">All Regions</option>
               <option value="Africa">Africa</option>
@@ -78,7 +78,7 @@ function App() {
             <select
               value={populationSize}
               onChange={(e) => setPopulationSize(e.target.value)}
-              className="p-2 border rounded"
+              className="p-2 border rounded text-black"
             >
               <option value="">All Sizes</option>
               <option value="small">Less than 1M</option>
@@ -106,11 +106,13 @@ function App() {
                 ) : filteredCountries.length ? (
                   filteredCountries.map((country) => (
                     <div key={country.alpha3Code} className="border rounded p-4 shadow">
-                      <img
-                        src={country.flag}
-                        alt={`${country.name} flag`}
-                        className="w-full h-40 object-cover rounded mb-2"
-                      />
+                      <div className="aspect-video mb-2 rounded overflow-hidden bg-transparent">
+                        <img
+                          src={country.flag}
+                          alt={`${country.name} flag`}
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
                       <h3 className="text-lg font-bold">{country.name}</h3>
                       <p>Region: {country.region}</p>
                       <p>Capital: {country.capital}</p>
